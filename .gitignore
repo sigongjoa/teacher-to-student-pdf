@@ -1,0 +1,15 @@
+# PDF 교재 파일 (저작권)
+*.pdf
+
+# 비교/테스트 이미지
+*.png
+
+# PyInstaller 빌드 산출물
+build/
+dist/
+*.spec
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
