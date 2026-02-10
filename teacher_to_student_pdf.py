@@ -18,8 +18,11 @@ def is_blue_answer(color):
     b = color & 0xFF
 
     # #00aeef, #00b9f2 등 시안/파란색 계열
-    # R이 낮고, B가 높은 경우
     if r < 50 and b > 200 and g > 100:
+        return True
+    # 진한 파란색 (체크마크, 답안 표시 등)
+    # B가 지배적이고 충분히 높은 경우
+    if b > 120 and b > r * 3 and b > g * 2:
         return True
     return False
 
@@ -29,9 +32,11 @@ def is_blue_drawing(color_tuple):
     if not color_tuple or len(color_tuple) < 3:
         return False
     r, g, b = color_tuple[0], color_tuple[1], color_tuple[2]
-    # 교사용 PDF에서 발견된 파란 도형 색상 범위:
-    # (0.0, 0.68, 0.94), (0.10, 0.69, 0.90), (0.16, 0.69, 0.83) 등
+    # 시안/파란색 계열: (0.0, 0.68, 0.94), (0.10, 0.69, 0.90) 등
     if r < 0.25 and b > 0.75 and g > 0.4:
+        return True
+    # 진한 파란색 (체크마크, 답안 표시 등): (0.13, 0.25, 0.60) 등
+    if b > 0.45 and b > r * 3 and b > g * 2:
         return True
     return False
 
