@@ -77,7 +77,7 @@ def convert_pdf(input_path, output_path, progress_callback=None):
         for rect in redact_areas:
             page.add_redact_annot(rect, fill=(1, 1, 1))
 
-        page.apply_redactions()
+        page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE, graphics=fitz.PDF_REDACT_LINE_ART_NONE)
 
         # 진행률 콜백
         if progress_callback:
